@@ -111,7 +111,7 @@ function Cards({
               onClick={() => setLike()}
             >
               <img
-                src={heart ? "/heartliked.svg" : "/heart.svg"}
+                src={heart ? "./heartliked.svg" : "./heart.svg"}
                 width="14px"
               />
               <Text px={1} color={heart ? "#ff0cf3" : "#545671"}>

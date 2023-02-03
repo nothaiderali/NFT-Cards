@@ -16,7 +16,7 @@ function App() {
           id="#B8/457843"
           bid={false}
           price={260}
-          image="/1.png"
+          image="./1.png"
           totalLikes={92}
           isLiked={true}
           deadline="03/31/2023"
@@ -25,7 +25,7 @@ function App() {
           id="#B8/457843"
           bid={false}
           price={260}
-          image="/2.png"
+          image="./2.png"
           totalLikes={32}
           isLiked={false}
           deadline="02/31/2023"
@@ -34,7 +34,7 @@ function App() {
           id="#B8/457843"
           bid={true}
           price={260}
-          image="/3.png"
+          image="./3.png"
           totalLikes={48}
           isLiked={true}
           deadline="02/10/2023"
