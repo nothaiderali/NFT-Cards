@@ -10,7 +10,7 @@ function App() {
         flexWrap="wrap"
         justifyContent="space-around"
         backgroundColor="#181720"
-        paddingTop="30px"
+        padding="30px 0"
       >
         <Cards
           id="#B8/457843"
