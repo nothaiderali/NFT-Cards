@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 
 type AppProps = {
   id: string;
-  bid: boolean;
+  onSale: boolean;
   price: number;
   image: string;
   totalLikes: number;
@@ -24,7 +24,7 @@ function Cards({
   id,
   price,
   image,
-  bid,
+  onSale,
   totalLikes,
   isLiked,
   deadline,
@@ -86,9 +86,9 @@ function Cards({
             colorScheme="teal"
             background="transparent"
             color="white"
-            border={bid ? "1px solid #262EDE" : "1px solid #F18B14"}
+            border={onSale ? "1px solid #262EDE" : "1px solid #F18B14"}
           >
-            {bid ? "Sale" : "Auction"}
+            {onSale ? "Sale" : "Auction"}
           </Badge>
         </Flex>
       </CardHeader>
@@ -98,7 +98,7 @@ function Cards({
           width="270px"
           height="250px"
           borderRadius="10px"
-          // alt='Chakra UI'
+          margin="auto"
         />
         <Box p={2} display="flex" justifyContent="space-between">
           <Text color="white">{id}</Text>
@@ -125,7 +125,7 @@ function Cards({
         </Text>
       </Box>
       <Box display="flex" alignItems="center" px={8} marginTop="5px">
-        {bid ? (
+        {onSale ? (
           <Box
             border="1px solid #545671"
             position="relative"
@@ -171,10 +171,10 @@ function Cards({
           p={1}
           borderRadius="5px"
           ml={2}
-          width={"148px"}
+          width={onSale ? "160px" : "145px"}
         >
           <Text color="#7ea7ce" fontWeight="500">
-            AUCTION END IN
+            {onSale ? "FLASH DEAL END IN" : "AUCTION END IN"}
           </Text>
           <Text color="white" fontWeight="500" letterSpacing="3px">
             {days + ":" + hours + ":" + minutes + ":" + seconds}s
@@ -182,7 +182,7 @@ function Cards({
         </Box>
       </Box>
       <Box p={4}>
-        {bid ? (
+        {onSale ? (
           <Box display="flex" justifyContent="space-between">
             <Button
               width="100%"

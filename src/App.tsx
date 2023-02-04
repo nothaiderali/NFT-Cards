@@ -14,7 +14,7 @@ function App() {
       >
         <Cards
           id="#B8/457843"
-          bid={false}
+          onSale={false}
           price={260}
           image="./1.png"
           totalLikes={92}
@@ -23,7 +23,7 @@ function App() {
         />
         <Cards
           id="#B8/457843"
-          bid={false}
+          onSale={false}
           price={260}
           image="./2.png"
           totalLikes={32}
@@ -32,7 +32,7 @@ function App() {
         />
         <Cards
           id="#B8/457843"
-          bid={true}
+          onSale={true}
           price={260}
           image="./3.png"
           totalLikes={48}
