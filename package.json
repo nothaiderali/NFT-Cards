@@ -1,5 +1,5 @@
 {
-  "name": "assignment",
+  "name": "nft-cards",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,10 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.4.1",
-    "@emotion/react": "11",
-    "@emotion/styled": "11",
+    "@chakra-ui/react": "^2.8.1",
     "react": "^18.2.0",
+    "react-countdown": "^2.3.5",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {

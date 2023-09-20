@@ -1,3 +1,4 @@
+import { useState, useMemo } from "react";
 import {
   Card,
   CardHeader,
@@ -8,16 +9,16 @@ import {
   Image,
   Badge,
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import Countdown from "react-countdown";
 
-type AppProps = {
+type props = {
   id: string;
   onSale: boolean;
   price: number;
   image: string;
   totalLikes: number;
   isLiked: boolean;
-  deadline: string;
+  timeLeft: number;
 };
 
 function Cards({
@@ -27,38 +28,13 @@ function Cards({
   onSale,
   totalLikes,
   isLiked,
-  deadline,
-}: AppProps) {
+  timeLeft,
+}: props) {
   const [heart, setHeart] = useState(isLiked);
   const [likes, setLikes] = useState(totalLikes);
-  const setLike = () => {
-    setLikes(heart ? likes - 1 : likes + 1);
-    setHeart(!heart);
-  };
-
-  function pad2(number: number) {
-    return (number < 10 ? "0" : "") + number;
-  }
-
-  const [days, setDays] = useState("00");
-  const [hours, setHours] = useState("00");
-  const [minutes, setMinutes] = useState("00");
-  const [seconds, setSeconds] = useState("00");
-
-  const getTime = () => {
-    const time = Date.parse(deadline) - Date.now();
-
-    setDays(pad2(Math.floor(time / (1000 * 60 * 60 * 24))));
-    setHours(pad2(Math.floor((time / (1000 * 60 * 60)) % 24)));
-    setMinutes(pad2(Math.floor((time / 1000 / 60) % 60)));
-    setSeconds(pad2(Math.floor((time / 1000) % 60)));
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => getTime(), 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const memoisedCounter = useMemo(() => {
+    return <Countdown date={timeLeft * 1000 + Date.now()} />;
+  }, [timeLeft]);
 
   return (
     <Card maxW="370px" backgroundColor="#0b2237" m="2">
@@ -108,7 +84,10 @@ function Cards({
               cursor="pointer"
               userSelect="none"
               alignItems="center"
-              onClick={() => setLike()}
+              onClick={() => {
+                setLikes(heart ? likes - 1 : likes + 1);
+                setHeart(!heart);
+              }}
             >
               <img
                 src={heart ? "./heartliked.svg" : "./heart.svg"}
@@ -177,7 +156,7 @@ function Cards({
             {onSale ? "FLASH DEAL END IN" : "AUCTION END IN"}
           </Text>
           <Text color="white" fontWeight="500" letterSpacing="3px">
-            {days + ":" + hours + ":" + minutes + ":" + seconds}s
+            {memoisedCounter}s
           </Text>
         </Box>
       </Box>
